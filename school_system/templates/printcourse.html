@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Courses</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Registered Courses</h2>
+        {% if registrations %}
+            <ul>
+                {% for registration in registrations %}
+                    <li>
+                        <strong>Course:</strong> {{ registration.course.name }}<br>
+                        <strong>Description:</strong> {{ registration.course.description }}<br>
+                        <strong>Registration Date:</strong> {{ registration.registration_date }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have not registered for any courses yet.</p>
+        {% endif %}
+        <a href="{% url 'list_courses' %}">Back to Courses</a>
+    </div>
+</body>
+</html>

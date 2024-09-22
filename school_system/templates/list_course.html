@@ -1,0 +1,11 @@
+<h2>Select Courses to Register</h2>
+<form method="post" action="{% url 'register_courses' %}">
+    {% csrf_token %}
+    {% for course in courses %}
+        <div>
+            <input type="checkbox" name="courses" value="{{ course.id }}">
+            <label for="{{ course.id }}">{{ course.name }}: {{ course.description }}</label>
+        </div>
+    {% endfor %}
+    <button type="submit">Register</button>
+</form>

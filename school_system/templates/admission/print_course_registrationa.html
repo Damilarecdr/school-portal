@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admission Letter</title>
+</head>
+<body>
+    <h2>Admission Letter</h2>
+    <p>Admission Number: {{ application.id }}</p>
+    <p>Dear {{ application.surname }} {{ application.other_names }},</p>
+    <p>We are pleased to inform you that your application for {{ application.class_applying }} has been approved.</p>
+    <p>Please find below your admission details:</p>
+    <ul>
+        <li>Class: {{ application.class_applying }}</li>
+        <li>Admission Number: {{ application.id }}</li>
+    </ul>
+    <p>We look forward to welcoming you.</p>
+    <p><strong>School Principal</strong></p>
+</body>
+</html>

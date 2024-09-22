@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Letter</title>
+</head>
+<body>
+    <h1>Admission Letter</h1>
+
+    <p>Admission Number: {{ admission_number }}</p>
+    <p>Class: {{ application.class_applying }}</p>
+    <p>Surname: {{ application.surname }}</p>
+    <p>Other Names: {{ application.other_names }}</p>
+
+    <p>Dear {{ application.surname }},</p>
+
+    <p>Congratulations! We are pleased to inform you that you have been admitted to our school. Please keep this letter as your official admission document. Your admission number is {{ admission_number }}.</p>
+
+    <p>Best regards,</p>
+    <p>The Principal</p>
+</body>
+</html>

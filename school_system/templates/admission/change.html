@@ -1,0 +1,16 @@
+
+<h1>Change Class for {{ application.surname }} {{ application.other_names }}</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="new_class">New Class:</label>
+    <select name="new_class" id="new_class">
+        <option value="JSS 1">JSS 1</option>
+        <option value="JSS 2">JSS 2</option>
+        <option value="JSS 3">JSS 3</option>
+        <option value="SSS 1">SSS 1</option>
+        <option value="SSS 2">SSS 2</option>
+        <option value="SSS 3">SSS 3</option>
+    </select>
+    <button type="submit">Change Class</button>
+</form>
+

@@ -1,0 +1,121 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>GHSE Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+    <meta name="description" content="">
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link href="{% static 'main.css' %}" rel="stylesheet">
+    <style>
+        #bg {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+        }
+        #bg img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            min-width: 50%;
+            min-height: 50%;
+            opacity: 0.5;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="app-container app-theme-white body-tabs-shadow imgg">
+    <div class="app-container">
+        <div class="h-100">
+            <div class="h-100 no-gutters row">
+                <div class="h-100 d-flex bg-white justify-content-center align-items-center col-md-12 col-lg-12">
+                    <div id="bg">
+                        <img src="{% static 'assets/images/ghs.pg' %}" alt="">
+                    </div>
+                    <div class="mx-auto app-login-box col-sm-12 col-md-10 col-lg-9">
+                        <div class="xdivider row"></div>
+                        <div class="justify-content-center align-items-center">
+                            <div class="mx-auto app-login-box col-md-12">
+                                <div class="modal-dialog w-100 mx-auto">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="h5 modal-title text-center">
+                                                <img src="{% static 'assets/images/ghs.png' %}" alt="">
+                                                <h4 class="mt-2">
+                                                    <span>Please sign in to your account below.</span>
+                                                </h4>
+                                            </div>
+                                            <!-- Display error messages -->
+                                        <!-- Display error messages -->
+{% if form.errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+                                            <form method="post" action="{% url 'account_login' %}">
+                                                {% csrf_token %}
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input name="login" id="login" required="" placeholder="Username or Email" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="position-relative form-group">
+                                                            <input name="password" id="password" required="" placeholder="Password" type="password" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer clearfix">
+                                                    <div class="float-left">
+                                                        <a class='btn btn-outline-success' href="{% url 'account_reset_password' %}">Recover Password</a>
+                                                    </div>
+                                                    <div class="float-left">
+                                                        <button type="submit" class="btn btn-primary" style="background-color: rgb(26, 8, 146);">Login</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div id='main_login'></div>
+                                            <div class="divider"></div>
+                                            <h6 class="mb-0">New Application? <i class="text-primary"><a href="{% url 'account_signup' %}">Click here to Apply</a></i></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xdivider row"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'main.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            line-height: 1.6;
+            font-size: 10px; /* Reduced base font size */
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2801a7;
+            font-size: 20px; /* Reduced heading font size */
+        }
+        .header {
+            text-align: center;
+        }
+        .header img {
+            width: 90px; /* Adjusted size */
+            height: 90px;
+        }
+        .content {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .section {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .section h3 {
+            color: #2801a7;
+            font-size: 20px; /* Reduced section heading font size */
+            margin-bottom: 8px;
+        }
+        .label {
+            font-weight: bold;
+            color: #333;
+            font-size: 14px; /* Reduced label font size */
+            display: inline-block;
+            width: 200px; /* Adjust this width to control spacing */
+        }
+        .info {
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 12px; /* Reduced info text font size */
+        }
+        .passport-container {
+            float: right;
+            text-align: center;
+            margin-right: 20px;
+            margin-top: 10px;
+        }
+        img.passport {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 5px;
+            float: right;
+        }
+        .clear-fix {
+            clear: both;
+        }
+        @media print {
+            body {
+                margin: 0;
+                background: none;
+            }
+            .content {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .passport-container {
+                float: none;
+                text-align: right;
+                margin: 0;
+            }
+        }
+        .footer {
+            text-align: center;
+            font-size: 14px; /* Reduced footer font size */
+            color: #777;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="http://127.0.0.1:8000/{% static 'assets/images/logo1.jpg' %}" alt="School Logo">
+</div>
+<h1>God's Heritage School, Ekosin</h1>
+<p style="text-align: center;">Isale Ogun Street, along Okua Road, Ekosin, Osun State</p>
+<p style="text-align: center;">Contact: 0814-575-7578 | Email: contact@ghse.com.ng</p>
+
+<div class="content">
+    <div class="passport-container">
+        <img src="http://127.0.0.1:8000/{{ application.passport.url }}" alt="Passport" class="passport">
+    </div>
+    <h2> {% if current_session %}
+        <p>{{ current_session.current_session }} Application Form</p>
+    {% else %}
+        
+    {% endif %} </h2>
+
+    <div class="section">
+        <h3>Personal Information</h3>
+        <div>
+            <div class="info"><span class="label">Surname:</span> <br>{{ application.surname }}</div>
+            <div class="info"><span class="label">Other Names:</span> <br>{{ application.other_names }}</div>
+            <div class="info"><span class="label">Date of Birth:</span><br> {{ application.date_of_birth }}</div>
+            <div class="info"><span class="label">Disability (if any):</span><br> {{ application.disability }}</div>
+        </div>
+        <div class="clear-fix"></div>
+    </div>
+
+    <div class="section">
+        <h3>Address Information</h3>
+        <div class="info"><span class="label">State of Origin:</span><br> {{ application.state_of_origin }}</div>
+        <div class="info"><span class="label">LGA:</span><br> {{ application.lga }}</div>
+        <div class="info"><span class="label">Current Address:</span> <br>{{ application.current_address }}</div>
+    </div>
+
+    <div class="section">
+        <h3>Parent/Guardian Information</h3>
+        <div class="info"><span class="label">Name:</span> <br>{{ application.parent_name }}</div>
+        <div class="info"><span class="label">Phone:</span><br> {{ application.parent_phone }}</div>
+        <div class="info"><span class="label">Address:</span> {{ application.parent_address }}</div>
+        <div class="info"><span class="label">Relationship:</span> <br>{{ application.parent_relationship }}</div>
+        <div class="info"><span class="label">Email:</span> <br>{{ application.parent_email }}</div>
+    </div>
+
+    <div class="section">
+        <h3>Educational Information</h3>
+        <div class="info"><span class="label">Special Needs:</span> <br>{{ application.special_needs|yesno:"Yes,No" }}</div>
+        <div class="info"><span class="label">Class Applying for:</span> <br>{{ application.class_applying }}</div>
+        <div class="info"><span class="label">Department:</span> <br>{{ application.department }}</div>
+    </div>
+
+    <div class="section">
+        <h3>Declaration
+        <!--div class="info"><span class="label">Declaration:</span> <br>{{ application.declaration|yesno:"Yes,No" }}</div-->
+        
+        {% if application.declaration %}
+             <p style="color: black;font-size: small;">I confirm that the information i have given on this form is true and that I am a parent/Guidiance of this child.</p>
+        {% endif %}
+    </h3>
+    </div>
+    
+
+   
+
+    <div class="footer">
+        <p>&copy; 2024 God's Heritage School, Ekosin. All Rights Reserved.</p>
+    </div>
+</div>
+
+</body>
+</html>

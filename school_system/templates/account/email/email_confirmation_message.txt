@@ -1,0 +1,4 @@
+Please confirm your email address by clicking the link below:
+{{ activate_url }}
+
+If you do not see the verification e-mail in your main inbox, check your spam folder. Please contact us if you do not receive the verification e-mail within a few minutes.

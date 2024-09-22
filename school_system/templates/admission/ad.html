@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admission Letter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            font-size: 12px; /* Adjust font size as needed */
+            text-align: left; /* Aligns all text to the left */
+            line-height: 1.2; /* Adjust line spacing */
+        }
+        h1 {
+            text-align: left;
+            color: #0056b3;
+        }
+        .header {
+            text-align: left;
+            margin-bottom: 10px; /* Reduced margin for tighter spacing */
+        }
+        .header img {
+            width: 90px; /* Adjust size as needed */
+            height: 90px; /* Adjust size as needed */
+        }
+        .section {
+            margin-bottom: 10px; /* Reduced spacing between sections */
+        }
+        .label {
+            font-weight: bold;
+        }
+        .info {
+            margin-bottom: 5px; /* Reduced spacing between info elements */
+        }
+        .signature {
+            margin-top: 20px; /* Reduced margin before the signature */
+            text-align: left; /* Align signature to the left */
+        }
+        .footer {
+            text-align: left;
+            margin-top: 20px; /* Reduced spacing before the footer */
+            font-size: 10px;
+            color: #777;
+        }
+        .passport-container {
+            position: absolute;
+            top: 0px; /* Place at the very top */
+            right: 0px; /* Align it to the right corner */
+            text-align: right;
+            padding: 10px; /* Add padding to prevent overlap with the browser edge */
+        }
+        .passport {
+            width: 120px; /* Adjust size as needed */
+            height: 120px; /* Adjust size as needed */
+            margin-top: 10px; /* Optional: slight margin for better positioning */
+        }
+        .clear-fix {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<!-- Passport container at the top right corner -->
+<div class="passport-container">
+    <img src="http://127.0.0.1:8000/{{ application.passport.url }}" alt="Passport" class="passport">
+</div>
+<!-- Logo section -->
+<div class="header">
+    <img src="http://127.0.0.1:8000/{% static 'assets/images/logo1.jpg' %}" alt="School Logo">
+</div>
+
+<h1>God's Heritage School, Ekosin</h1>
+<p>Isale Ogun Street, along Okua Road, Ekosin, Osun State</p>
+<p>Contact: 0814-575-7578 | Email: contact@ghse.com.ng</p><br><br>
+
+
+
+<b>
+    <p style="line-height: 0; margin-bottom: 5px;">{{ application.date_admission_approved }}</p>
+    <p style="line-height: 0; margin-bottom: 5px;">Dear {{ application.surname }} {{ application.other_names }},</p>
+    <p style="line-height: 0; margin-bottom: 5px;">{{ admission_number }}</p>
+    <p style="line-height: 0; margin-bottom: 5px;">{{ application.lga }}</p>
+    <p style="line-height: 0; margin-bottom: 5px;">{{ application.state_of_origin }}</p>
+    
+   </b>
+<br>
+<div class="section">
+    <h3>ADMISSION NOTIFICATION</h3>
+    <p>We are pleased to inform you that you have been admitted to God's Heritage School, Ekosin. Your admission number is <strong>{{ admission_number }}</strong>.</p>
+</div>
+
+
+   
+   
+  
+    <ul>
+        <li><strong>Class:</strong> {{ application.class_applying }}</li>
+        <li><strong>Admission Number:</strong> {{ admission_number }}</li>
+    </ul>
+
+    <p>To confirm your acceptance of your admission, please proceed to make the school payment on your portal. This step is essential to finalize your enrollment.</p>
+    <p>We welcome you to our school community and look forward to supporting you in your educational journey.</p>
+    <p>Congratulations!</p>
+</div>
+
+<div class="signature">
+    <img src="http://127.0.0.1:8000/{% static 'assets/images/sign.png' %}" alt="Signature" style="width: 100px;">
+    <p> <strong> Kehinde</strong><br>
+    Principal, GHSE</div>
+</div>
+
+<div class="clear-fix"></div>
+
+<div class="footer">
+    <p>&copy; 2024 God's Heritage School, Ekosin. All Rights Reserved.</p>
+</div>
+
+</body>
+</html>

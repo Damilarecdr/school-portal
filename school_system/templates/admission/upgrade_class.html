@@ -1,0 +1,15 @@
+<!-- templates/admission/upgrade_class.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Upgrade Class for {{ application.surname }} {{ application.other_names }}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">Upgrade Class</button>
+  </form>
+
+  <a href="{% url 'admin_view_applications' %}" class="btn btn-secondary mt-3">Back to Applications</a>
+{% endblock %}

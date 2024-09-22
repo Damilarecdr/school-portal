@@ -1,0 +1,1072 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Portal::</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
+    />
+    <meta name="description" content="Portal Management System">
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+
+</head>
+<body>
+<div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
+   
+
+
+
+		<script src="{% static 'assets/js/script.js' %}"></script>  
+		<link href="{% static 'main.css' %}" rel="stylesheet">
+		<script type="text/javascript" src="{% static 'assets/scripts/main.js'%}"></script>
+		
+	
+<!-- <link href="./main.css"  rel="stylesheet"> -->
+<div class="app-header header-shadow">
+    
+    
+        <div class="app-header__mobile-menu">
+            <div>
+                <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="app-header__menu">
+            <span>
+                <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                    <span class="btn-icon-wrapper">
+                        <i class="fa fa-ellipsis-v fa-w-6"></i>
+                    </span>
+                </button>
+            </span>
+        </div>    
+        <div class="app-header__content">
+            <div class="app-header-left">
+                <div class="dropdown show">
+                    <a href="{% url 'dashboard' %}" class="nav-link" role="button" id="dropdownMenuLink" aria-expanded="false">
+                    <i class="nav-link-icon pe-7s-culture"> </i>
+                            Dashboard
+                            <i class="ml-2 opacity-5"></i>
+                    </a>
+                    
+                </div>
+                
+                <div class="dropdown show">
+                    <a href="{% url 'account_logout' %}"   class="nav-link" aria-expanded="false">
+                            <i class="nav-link-icon fa fa-power-off"></i>
+                            Logout
+                    </a>
+                    
+                </div>
+            </div>
+
+            <div class="app-header-right">
+                <!-- Email-Notification
+                <div class="header-dots">
+                    <div class="dropdown">
+                        <a href="main.php" aria-haspopup="true" aria-expanded="false"  class="p-0 mr-2 btn btn-link">
+                            <span class="icon-wrapper icon-wrapper-alt rounded-circle">
+                                <span class="icon-wrapper-bg bg-primary"></span>
+                                <i class="icon text-primary ion-android-apps"></i>
+                            </span>
+                        </a>
+                                           </div>
+                    <div class="dropdown">
+                        <button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="p-0 mr-2 btn btn-link">
+                            <span class="icon-wrapper icon-wrapper-alt rounded-circle">
+                                <span class="icon-wrapper-bg bg-danger"></span>
+                                <i class="icon text-danger icon-anim-pulse ion-android-notifications"></i>
+                                <span class="badge badge-dot badge-dot-sm badge-danger">Notifications</span>
+                            </span>
+                        </button>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl rm-pointers dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu-header mb-0">
+                                <div class="dropdown-menu-header-inner bg-deep-blue">
+                                    <div class="menu-header-image opacity-1" style="background-image: url('assets/images/dropdown-header/city3.jpg');"></div>
+                                    <div class="menu-header-content text-dark">
+                                        <h5 class="menu-header-title">Notifications</h5>
+                                        <h6 class="menu-header-subtitle">You have <b>21</b> unread messages</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="tabs-animated-shadow tabs-animated nav nav-justified tabs-shadow-bordered p-3">
+    <li class="nav-item">
+        <a role="tab" class="nav-link active" data-toggle="tab" href="#inbox">
+            <span>Inbox Msgs.</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a role="tab" class="nav-link" data-toggle="tab" href="#compose">
+            <span>Compose</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a role="tab" class="nav-link" data-toggle="tab" href="#sent">
+            <span>Sent Msgs.</span>
+        </a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="inbox" role="tabpanel">
+            <div class="scroll-area-sm">
+                <div class="scrollbar-container">
+                    <div class="p-3">
+                        <div class="vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-success"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">All Hands Meeting</h4>
+                                        <p>Lorem ipsum dolor sic amet, today at <a href="javascript:void(0);">12:00 PM</a></p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-warning"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><p>Another meeting today, at <b class="text-danger">12:00 PM</b></p>
+                                        <p>Yet another one, at <span class="text-success">15:00 PM</span></p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-danger"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">Build the production release</h4>
+                                        <p>Lorem ipsum dolor sit amit,consectetur eiusmdd tempor incididunt ut labore et dolore magna elit enim at minim veniam quis nostrud</p><span
+                                                class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-primary"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title text-success">Something not important</h4>
+                                        <p>Lorem ipsum dolor sit amit,consectetur elit enim at minim veniam quis nostrud</p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-success"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">All Hands Meeting</h4>
+                                        <p>Lorem ipsum dolor sic amet, today at <a href="javascript:void(0);">12:00 PM</a></p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-warning"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><p>Another meeting today, at <b class="text-danger">12:00 PM</b></p>
+                                        <p>Yet another one, at <span class="text-success">15:00 PM</span></p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-danger"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">Build the production release</h4>
+                                        <p>Lorem ipsum dolor sit amit,consectetur eiusmdd tempor incididunt ut labore et dolore magna elit enim at minim veniam quis nostrud</p><span
+                                                class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-primary"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title text-success">Something not important</h4>
+                                        <p>Lorem ipsum dolor sit amit,consectetur elit enim at minim veniam quis nostrud</p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="tab-pane " id="compose" role="tabpanel">
+        <div class="scroll-area-sm">
+            <div class="scrollbar-container">
+                <div class="p-3">
+                    <div class="notifications-box">
+                        Write your message here..........
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tab-pane" id="sent" role="tabpanel">
+        <div class="scroll-area-sm">
+            <div class="scrollbar-container">
+                <div class="p-3">
+                    Sent messages.....
+                </div>
+            </div>
+        </div>
+    </div>
+</div>                            <ul class="nav flex-column">
+                                <li class="nav-item-divider nav-item"></li>
+                                <li class="nav-item-btn text-center nav-item">
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+                -->
+                <div class="header-btn-lg pr-0">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-wrapper">
+                            <div class="widget-content-left">
+                                <div class="btn-group">
+                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                                                                <img width="42" class="rounded-circle" src="putme_pictures/202210851123cf.jpg" alt="">
+                                        <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                    </a>
+                                    <div tabindex="-1" role="menu" aria-hidden="true" class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
+                                        <div class="dropdown-menu-header">
+                                            <div class="dropdown-menu-header-inner bg-success">
+                                                <div class="menu-header-image opacity-2" style="background-image: url('assets/images/dropdown-header/city3.jpg');"></div>
+                                                <div class="menu-header-content text-left">
+                                                    <div class="widget-content p-0">
+                                                        <div class="widget-content-wrapper">
+                                                            <div class="widget-content-left mr-3">
+                                                                <img width="42" class="rounded-circle"
+                                                                     src="putme_pictures/202210851123cf.jpg"
+                                                                     alt="">
+                                                            </div>
+                                                            <div class="widget-content-left">
+                                                                <div class="widget-heading">
+                                                                    {{ application.surname }}  {{ application.other_names }}                                                           </div>
+                                                                <div class="widget-subheading opacity-8">
+                                                                    Email: {{ application.email }}<br>Disability:{{ application.disability}}                                                                </div>
+                                                            </div>
+                                                            <div class="widget-content-right mr-2">
+                                                                <a href="javascript:if(confirm('You about to Logout?')===true) location='logout.php'" class="btn-pill btn-shadow btn-shine btn btn-focus">Logout
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="scroll-area-xs" style="height: 260px;">
+                                            <div class="scrollbar-container ps">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item-header nav-item">Password Management
+                                                    </li>
+													<li class="nav-item">
+														<div class="alert alert-infxo">
+														  <form name="frmpassword" id="frmpassword">
+															  <span id='password_management'></span>
+															<table class="mb-0 table table-sm">
+															   <tr><td>Old Password</td><td><input type='password' name='oldpwd' id='oldpwd' class='form-control'></td></tr>
+															   <tr><td>New Password</td><td><input type='password' name='newpwd' id='newpwd' class='form-control'></td></tr>
+															   <tr><td>Confirm Password</td><td><input type='password' name='confpwd' id='confpwd' class='form-control'></td></tr>
+															   
+															</table>
+															<ul class="nav flex-column">
+																<li class="nav-item-divider nav-item">
+																</li>
+																<li class="nav-item-btn text-center nav-item">
+																	<input type='button' name='cmd' id='cmd' value='Change Password' class='btn btn-success' >
+																	
+																</li>
+															</ul>
+															
+															
+														  </form>
+														</div>
+													   </li>
+													
+													
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!--<ul class="nav flex-column">
+                                            <li class="nav-item-divider mb-0 nav-item"></li>
+                                        </ul>
+                                        <div class="grid-menu grid-menu-2col">
+                                            <div class="no-gutters row">
+                                                <div class="col-sm-6">
+                                                    <button class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-warning">
+                                                        <i class="pe-7s-chat icon-gradient bg-amy-crisp btn-icon-wrapper mb-2"></i>
+                                                        Message Inboxx
+                                                    </button>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <button class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-danger">
+                                                        <i class="pe-7s-ticket icon-gradient bg-love-kiss btn-icon-wrapper mb-2"></i>
+                                                        <b>Support Tickets</b>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-content-left  ml-3 header-user-info">
+                                <div class="widget-heading">
+                                    {{ application.surname }} {{ application.other_names }}                                  
+                                </div>
+                                <div class="widget-subheading">
+                                    {{ application.email }}                               </div>
+                            </div>
+                            <!-- <div class="widget-content-right header-user-info ml-3">
+                                <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
+                                    <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                                </button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div> 
+        <div class="app-main">
+            <div class="app-sidebar sidebar-shadow">
+                <div class="app-header__logo">
+                    <div class="logo-src"></div>
+                    <div class="header__pane ml-auto">
+                        <div>
+                            <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-header__mobile-menu">
+                    <div>
+                        <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="app-header__menu">
+                    <span>
+                        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                            <span class="btn-icon-wrapper">
+                                <i class="fa fa-ellipsis-v fa-w-6"></i>
+                            </span>
+                        </button>
+                    </span>
+                </div>    <div class="scrollbar-sidebar">
+                    <div class="app-sidebar__inner">
+                        <ul class="vertical-nav-menu">
+                                                                        <!-- ##### Student Menu ######### -->
+                                            <li class="app-sidebar__heading">Student Menu</li>
+                                           <!-- <li>
+                                                <a href="main.php">
+                                                    <i class="metismenu-icon pe-7s-light"></i>
+                                                    Dashboard
+                                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                                </a>-->
+                                                 <ul>
+                                                    <li>
+                                                        <a href="{% url 'dashboard' %}">
+                                                            <i class="metismenu-icon">
+                                                            </i>Dashboard
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ 'general_payment' }}">
+                                                            <i class="metismenu-icon">
+                                                            </i>Payment Section
+                                                        </a>
+                                                    </li>
+													<li>
+                                                        <a href="">
+                                                            <i class="metismenu-icon">
+                                                            </i>ReQuery Payment
+                                                        </a>
+                                                    </li>
+                                                    
+                                                    	
+													 															 
+                                                        <li>
+                                                            <a href="#">
+                                                                <i class="metismenu-icon">
+                                                                </i>eVoting Platform
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <i class="metismenu-icon">
+                                                                </i>Lecturer Class Attendance
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <i class="metismenu-icon">
+                                                                </i>Hostel Allocation
+                                                            </a>
+                                                        </li>
+												         
+												   												   												   												                                                    
+													<li>
+                                                        <a href="{% url 'register_courses' %}">
+                                                            <i class="metismenu-icon">
+                                                            </i>Course Registration
+                                                        </a>
+                                                    </li>
+                                                 
+                                                                                                    <li>
+                                                        <a href="{% url 'registered_courses' %}">
+                                                            <i class="metismenu-icon">
+                                                            </i>Print Course Registration Form
+                                                        </a>
+                                                    </li> 
+                                                     
+                                                                                                        <li>
+                                                        <a href="#">
+                                                            <i class="metismenu-icon">
+                                                            </i>LMS Enrolment
+                                                        </a>
+                                                    </li> 
+                                                    <li>
+                                                        <a href="{% url 'payment_receipt' %}">
+                                                            <i class="metismenu-icon">
+                                                            </i>Print School Fee Receipt
+                                                        </a>
+                                                    </li>
+                                                    <!--<li>
+                                                        <a href="forms-validation.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Validation
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-wizard.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Wizard
+                                                        </a>
+                                                    </li>-->
+                                                </ul> 
+                                            <!--</li>-->
+                                            <!-- <li>
+                                                <a href="#">
+                                                    <i class="metismenu-icon pe-7s-joy"></i>
+                                                    Widgets
+                                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                                </a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="forms-datepicker.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Datepicker
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-range-slider.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Range Slider
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-input-selects.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Input Selects
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-toggle-switch.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Toggle Switch
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-wysiwyg-editor.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>WYSIWYG Editor
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-input-mask.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Input Mask
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-clipboard.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Clipboard
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-textarea-autosize.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Textarea Autosize
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li> -->
+                                            <!-- ##### End of Students Menu ####### -->
+                                                                
+
+
+                            
+
+                            
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="app-main__outer">
+                <div class="app-main__inner">
+                 <div class="app-page-title">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div class="page-title-icon1">
+                                    <i>
+										<img src="{% static 'assets/images/ghs.png'%}" alt=''>                                        <!--<img src="assets/images/banner.png" alt="">-->
+                                    </i>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+</div>                 
+                <!-- ###### Content Start ##########-->
+                    
+                    
+<div class="row">
+    <div class="col-sm-12 col-lg-6">
+        <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="header-icon fa fa-user icon-gradient bg-malibu-beach"> </i>Basic Profile</div>
+
+                <div class="btn-actions-pane-right text-capitalize actions-icon-btn">
+                    
+                    <div class="btn-group dropdown">
+                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-icon btn-icon-only btn btn-link"><i class="pe-7s-menu btn-icon-wrapper"></i></button>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-area-lg12">
+                <div class="scrollbar-container">
+                    <div class="p-2">
+                    <center><table>
+		   		   <tr><th>Reg/Matriculation No:</th><td><b> {{ user.username }}</b></td><td rowspan='6' valign='top'><fieldset><legend><b>Passport</b></legend><img src='{{application.passport.url}}' alt='22/67EC/1449' width='150' height='150'/></fieldset></td></tr>
+				   <tr><th>Full-Name:</th><td><b> {{ application.surname }} {{ application.other_names }}</b></td></tr>
+				   <tr></td></tr><tr><th>Class:</th><td><b> {{ application.class_applying }}</b></td></tr><tr><th></th><td><b> </b></td></tr><tr><th>Portal Category:</th><td><b>Nursery/Primary </b></td></tr></table></center>
+</a></span><span class='float-right'><a href="{% url 'admission_letter' %}" target='_blank' class='btn btn-success'><i class='fa fa-list'> </i> Print Application Form</a></span>                        
+                    </div>
+                </div>
+            </div>
+            <div class="d-block text-right card-footer">
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- School Fees -->
+    <div class="col-sm-12 col-lg-6">
+        <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="header-icon lnr-chart-bars icon-gradient bg-malibu-beach"> </i>School Charges and Current Registration Status</div>
+                <div class="btn-actions-pane-right text-capitalize actions-icon-btn">
+                    <div class="btn-group dropdown">
+                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-icon btn-icon-only btn btn-link"><i class="pe-7s-menu btn-icon-wrapper"></i></button>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-area-lg12">
+                <div class="scrollbar-container">
+                    <div class="p-2">
+                    						<table class="mb-0 table table-sm table-bordered table-hover table-striped">
+							<tr>
+								<th>Current Session :</th><td>{% if current_session %}
+                                    <p>Current Session: {{ current_session.current_session }}</p>
+                                {% else %}
+                                    <p>No current session available.</p>
+                                {% endif %}</td>
+							</tr>
+							
+							<!--<tr>
+								<th>Failed/Carry Over Courses :</th><td></td>
+							</tr>
+							<tr>
+							<th>Outstanding Courses :</th><td></td>
+							</tr>-->
+						</table>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="d-block text-right card-footer">
+                
+            </div>
+        </div>
+        
+        
+    </div>
+   
+</div>
+<!--div class="row">
+    <div class="col-sm-12 col-lg-6">
+        <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="header-icon lnr-lock icon-gradient bg-malibu-beach"> </i>Password Management</div>
+                <div class="btn-actions-pane-right text-capitalize actions-icon-btn">
+                    <div class="btn-group dropdown">
+                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-icon btn-icon-only btn btn-link"><i class="pe-7s-menu btn-icon-wrapper"></i></button>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-area-lg12">
+                <div class="scrollbar-container">
+                    <div class="p-2">
+                        <div class="alert alert-info">
+                          <form name="frmpassword" id="frmpassword">
+                            <table class="mb-0 table table-sm">
+                               <tr><th>Old Password</th><td><input type='password' name='oldpwd2' id='oldpwd2' class='form-control'></td></tr>
+                               <tr><th>New Password</th><td><input type='password' name='newpwd2' id='newpwd2' class='form-control'></td></tr>
+                               <tr><th>Confirm Password</th><td><input type='password' name='confpwd2' id='confpwd2' class='form-control'></td></tr>
+                               <tr><td><div style="text-align:right;"><input type='button' name='cmd' id='cmd' value='Change Password' class='btn btn-success' onClick="swapcontent('password_management2',$('#oldpwd2').val(),$('#newpwd2').val(),$('#confpwd2').val());"></td></div><td><input type='reset' name='cmd' id='cmd' value='Clear' class='btn btn-success'></td></tr>
+                            </table>
+                            <span id='password_management2'></span>
+                          </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="d-block text-right card-footer">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-6">
+        <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="header-icon lnr-upload icon-gradient bg-ripe-malin"> </i>Passport/Signature Upload (<span class="text-danger">Only .jpg file format</span>)</div>
+                <div class="btn-actions-pane-right text-capitalize actions-icon-btn">
+                    
+                </div>
+            </div>
+            <div class="scroll-area-lg1">
+                <div class="scrollbar-container">
+                    <div class="p-2">
+                        <div class="alert alert-info">
+                        <form id="imageForm" name="imageForm" enctype="multipart/form-data" action="pixupload.php" method="post" target="uploadedImage">
+                            <table class="mb-0 table table-sm">
+                            <tr><td><b>File Type</b></td><td><select name="doc_type" id="doc_type">
+                            <option selected="selected">---</option>
+                            <option value="Passport">Passport</option>
+                            <option value="Signature">Signature</option>
+                            </select></td></tr>
+                            <input type="hidden" name="MAX_FILE_SIZE" value="200000" />
+                            <input name="oldImageToDelete" id="oldImageToDelete" type="hidden"
+                                size="20" />
+                                                        <input type="hidden" name="upload_appno" id="upload_appno" value="22/67EC/1449"/>
+							<input type="hidden" name="track_upload" id="track_upload" value="student"/>
+                            <tr><td><b>Select File</b></td><td><input name="imageToUpload" id="imageToUpload" type="file"   onchange= " uploadImage();swapcontent('load_images');"  size="20" /></td></tr>
+                            <tr>
+                            <td colspan="2"><div id="document" style="text-align:center;">
+                            <iframe id="uploadedImage" name="uploadedImage" src="" class="passport" width="100" height="100">
+                        
+                            </iframe>
+                            </div></td>
+                            </tr>
+							<tr>
+								<td colspan="2" align="center"><div class="alert alert-warning"><strong>Uploaded Signature:</strong>
+								<img src='pictures/2267ec1449_sign.jpg' width='100' height='70'/>	
+								</div>
+								
+								</td>
+							
+							</tr>
+                            </table>
+                                    
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div-->
+
+<div class="row alert">
+    <!-- Print Course Form -->
+    <div class="col-sm-12 col-lg-6">
+        
+        <div class="col-sm-12 col-lg-12">
+            <div class="card-hover-shadow-2x mb-3 card">
+                <div class="card-header-tab card-header">
+                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="header-icon lnr-chart-bars icon-gradient bg-malibu-beach"> </i>Print Course Registration</div>
+                    <div class="btn-actions-pane-right text-capitalize actions-icon-btn">
+                        <div class="btn-group dropdown">
+                            <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-icon btn-icon-only btn btn-link"><i class="pe-7s-menu btn-icon-wrapper"></i></button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-area-lg12">
+                    <div class="scrollbar-container">
+                        <div class="p-2">
+                            <form action="#" >
+                                <table class="table table-strip" >
+                                <tr> <th>Select Session</th> <td><select name="session"  id="session" >
+                                    <option value='2023/2024***200'></option><option value='2022/2023***100'></option></select></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><center><input type="submit" class="btn btn-success" value="Submit" name="btnsubmit" /></center></td>
+                                    </tr>
+                                </table>
+                                <input type='hidden' value='22/67EC/1449' name='regno' id='regno'>                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="d-block text-right card-footer">
+                    
+                </div>
+            </div>
+
+        </div>
+        <!-- Makeup Exam-->
+               
+    </div>
+    <!-- Check your Results -->
+    <div class="col-sm-12 col-lg-6">
+        <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="header-icon lnr-chart-bars icon-gradient bg-malibu-beach"> </i>Check your Results</div>
+                <div class="btn-actions-pane-right text-capitalize actions-icon-btn">
+                    <div class="btn-group dropdown">
+                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-icon btn-icon-only btn btn-link"><i class="pe-7s-menu btn-icon-wrapper"></i></button>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-area-lg12">
+                <div class="scrollbar-container">
+                    <div class="p-2">
+						
+							<form >
+								 <table class="table">
+								    <tr><td>Type of Result</td>
+										<td>
+											<select name='rtype' id='rtype' onchange="swapcontent('result_option',this.value,'22/67EC/1449');">
+												<option value='' selected='selected'>---</option>
+												<option value='all'>All</option>
+												<!--<option value='Sessional'>Sessional</option>-->
+												<!--<option value='Semester'>Semester</option>-->
+											</select>
+										</td>
+									 </tr>
+									<tr>
+                                        <td colspan='2'>
+                                            <span id='result_option'>
+                                                <table class='mb-0 table table-sm'><tr><td colspan='2'>
+                                                <center><input type='button' value='Display Results' name='cmdres' onClick="swapcontent('display_results');" class='btn btn-success'>
+                                                <span id='display_results'></span></td></tr></center>
+                                                </table>
+                                            </span>
+                                        </td>
+                                    </tr>											
+								 </table>
+						   </form>
+                        <!--<form action="#" method="post" enctype="multipart/form-data" target="_blank">
+                            <table class="table table-strip" >
+                            <tr> <th>Select Session</th> <td><select name="session"  id="session" >
+                                <option value='2023/2024***200'>2023/2024 || 200 Level</option><option value='2022/2023***100'>2022/2023 || 100 Level</option></select></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><div class='text-center'><input type="submit" class="btn btn-success" value="Submit" name="btnsubmit" /></div></td>
+                                </tr>
+                            </table>
+                            <input type='hidden' value='22/67EC/1449' name='regno' id='regno'>                        </form>-->
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="d-block text-right card-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--div class="row alert">
+    <! Print Receipts ->
+    <div class="col-sm-12 col-lg-6">
+        <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="header-icon lnr-printer icon-gradient bg-ripe-malin"> </i>List of Payment Receipts</div>
+                <div class="btn-actions-pane-right text-capitalize actions-icon-btn">
+                    
+                </div>
+            </div>
+            <div class="scroll-area-lg">
+                <div class="scrollbar-container">
+                    <div class="p-2">
+                            
+                            <div class='alert alert-info'>Click on any of the Payment Description below to generate Receipt</div>
+                                                <table class='table table-striped'><thead><tr><th>S/No</th><th>Academic Session</th><th>Payment Description</th><th>Level</th></tr></thead><tbody><tr><td>1</td><td>2022/2023</td><td><a class='btn btn-success' href=receipt.php?id=MjAyMjEwODUxMTIzY2YyMDIyMDgxMzEyNDM0NGM0SnZi&pid=MjIvNjdFQy8xNDQ5&h_val=4a00f38b9774071c7ec855b19b829a39f4598939c78cb1c20ff5d3cb25022e5861776a9c19e3531fe0c4fa15023dedb15a7c0e8f55a65cb8a2512fdbfeb387aa8045ed90dba1d8eeb02804b4a655f540 target='_blank'>Application Form</a></td><td></th></tr><tr><td>2</td><td>2022/2023</td><td><a class='btn btn-success' href=receipt.php?id=MjI2N0VDMTQ0OTIwMjMxMDIyMDI0MTU4bFBHUk4=&pid=MjIvNjdFQy8xNDQ5&h_val=b526d92bc849bba80973b9a9c17676a3820fb4ce37b6907deb87e05acde2643aea857b957b1aa065919f85009efa588a3a7605e8ddf4e53218b5c0c4547dddaf211442b6fb69b4fafb499a318a58851a target='_blank'>Summer Application Fee</a></td><td></th></tr><tr><td>3</td><td>2022/2023</td><td><a class='btn btn-success' href=receipt.php?id=MjAyMjEwODUxMTIzY2YyMDIyMDkxMzA4NDc0N21tQWNj&pid=MjIvNjdFQy8xNDQ5&h_val=c600deada1311f4222328e49481abbb4fcf7400b82e62492e4ec5d359d8caaf514a55d6fa824f4f23c6df0850da59db214bb04f14dc70dd78c9bf4ccc612bebb03e0ee53aa56716e0157ae595ad8b00e target='_blank'>Acceptance Fee</a></td><td>100</th></tr><tr><td>4</td><td>2022/2023</td><td><a class='btn btn-success' href=receipt.php?id=MjAyMjEwODUxMTIzQ0YyMDIzMDEyMzA4NDM1MEZEVDBE&pid=MjIvNjdFQy8xNDQ5&h_val=959f419115902f8e1ce3586ab3dcf41f2e4863ac1919ad9aeda4a2de3c158e8c8735c5a767f7708bcec3762e0d6c9bac7fffdc4ea4b83fff58cf04f108f1c05627e5e73825e7af09a16659467aad954d target='_blank'>Hostel Exemption Fee</a></td><td>100</th></tr><tr><td>5</td><td>2022/2023</td><td><a class='btn btn-success' href=receipt.php?id=MjAyMjEwODUxMTIzQ0YyMDIzMDEzMTEwMzc0MGtuUkRU&pid=MjIvNjdFQy8xNDQ5&h_val=e19149557201352f719c6baafdf3da9908309c7b03e3c4905738d65e6ac07c74a83a9c064257af390dd6f2fa89c21c5a4c4a9af4ca252b9c6dbc2371fadd1d499b6999b75cc7059dcc40b347231f12bd target='_blank'>Late Registration Fee</a></td><td>100</th></tr><tr><td>6</td><td>2022/2023</td><td><a class='btn btn-success' href=receipt.php?id=MjAyMjEwODUxMTIzY2YyMDIyMDkyOTA3MTAyNDB6QlFN&pid=MjIvNjdFQy8xNDQ5&h_val=00693d76471fbf21230778f7b1f63fa64b5cdadb4337f1e8471286dc22f7c957e173938207b4bb3698ea3a017e50cf0a0d67def141677acb086770de290888380fca8e4411823d9299d98ddde2f18d5d target='_blank'>School Charges</a></td><td>100</th></tr><tr><td>7</td><td>2023/2024</td><td><a class='btn btn-success' href=receipt.php?id=MjI2N0VDMTQ0OTIwMjMxMDIyMDMxMzA2ZG1TUzE=&pid=MjIvNjdFQy8xNDQ5&h_val=23cc2202cd179b183ee33b1a46131dc135fcff8445f8ad0a81a2fd38d30de504affe0173dddfb1de43df94acaf10b90b533d41e8e5064f77c5087ab5d8fa8cead4f77ba782c4b1f46e358ce7fa56a092 target='_blank'>Summer Course Registration</a></td><td></th></tr><tr><td>8</td><td>2023/2024</td><td><a class='btn btn-success' href=receipt.php?id=MjI2N0VDMTQ0OTIwMjQwMTAxMDk0OTMzT05Rb3A=&pid=MjIvNjdFQy8xNDQ5&h_val=69f54a0af52cb33ca187a02e857032a5fe4fab8bdbd37f81efa9c00608e4259c8ea9fb04b3062a8d95724bd7c25d902c669cd88e34bc6aa3fedcf93c00dd10dc4865e41765f576f90f47fa09b44f05ae target='_blank'>School Charges</a></td><td>200</th></tr><tr><td>9</td><td>2023/2024</td><td><a class='btn btn-success' href=receipt.php?id=MjI2N0VDMTQ0OTIwMjQwNTEzMDcyNTQ1dER5Zlc=&pid=MjIvNjdFQy8xNDQ5&h_val=bd6abcb50f71b87dfd2c2e5dc0449db450f80db4406fc8615c27427c50eefe2afb3c481accca096b33ecd65994138e8421d79c614519744907ab9c985eb2e3563c482cbbf8856d582b9769585c54245b target='_blank'>Student Work Experience Programme SWEP fees</a></td><td>200</th></tr></tbody></table></tbody></table></center>                        
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                
+            </div>
+        </div>
+    </div-->
+    
+    <!-- Update Email and Phone -->
+    <!--div class="col-sm-12 col-lg-6">
+        <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="header-icon lnr-chart-bars icon-gradient bg-ripe-malin"> </i>Email and Phone No Update</div>
+                <div class="btn-actions-pane-right text-capitalize actions-icon-btn">
+                    
+                </div>
+            </div>
+            <div class="scroll-area-lg">
+                <div class="scrollbar-container">
+                    <div class="p-2">
+                    <div class="alert alert-info">
+                            <form name='emailform' id='emailform'>
+                                <table class="table">
+                                    <tr><th>Email</th><td><input type="text" name="email" id="email" readonly value="jimohabdulwahab902@gmail.com" /> </td></tr>
+                                    <tr><th>Phone No</th><td><input type="text" name="tel_no" id="tel_no" readonly value="08106044973" /> </td></tr>
+                                    <tr><td colspan='2'>
+                                    <!-- <input type="button" name="cmdemail" value="Update" class="btn btn-success" onClick="swapcontent('email_update')" /> ->
+                                    </td></tr>
+                                    <tr><td colspan='2'><span id='email_update'></span></td></tr><input type="hidden" name="regno" id="regno" value="22/67EC/1449" />			
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                
+            </div>
+        </div>
+    </div><!-- end of update email and phone -->
+
+</div> <!-- end of row ->
+
+<div class="row alert">
+    <!-- Update Email and Phone ->
+    <div class="col-sm-12 col-lg-6">
+        <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="header-icon lnr-chart-bars icon-gradient bg-ripe-malin"> </i>Sponsored Data Phone Number Update</div>
+                <div class="btn-actions-pane-right text-capitalize actions-icon-btn">
+                    
+                </div>
+            </div>
+            <div class="scroll-area-lg">
+                <div class="scrollbar-container">
+                    <div class="p-2">
+                    <div class="alert alert-info">
+                            <form name='glo_phonenoform' id='glo_phonenoform'>
+                                <table class="table">
+                                    <tr><th>Sponsored Data Phone No (MSISDN)</th><td><input type="text" name="tel_no_glo" id="tel_no_glo"  value="" /> </td></tr>
+                                    <tr><td colspan='2'>
+                                    <input type="button" name="cmdemail" value="Update" class="btn btn-success" onClick="swapcontent('glo_phoneno_update')" />
+                                    </td></tr>
+                                    <tr><td colspan='2'><span id='glo_phoneno_update'></span></td></tr><input type="hidden" name="regno" id="regno" value="22/67EC/1449" />			
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                
+            </div>
+        </div>
+    </div><!-- end of update email and phone ->
+</div--><!-- end of row -->
+
+<script src="include/pixupload.js"></script>
+
+                    <!-- ###### Content End ##########-->
+
+
+                
+                
+            
+            <div class="app-wrapper-footer">
+                    <div class="app-footer">
+                        <div class="app-footer__inner">
+                            
+                            <div class="app-footer-right">
+                                    &copy; 2024. God's Heritage Group of School. All right reserved. 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <script type="text/javascript" src="./assets/scripts/main.js"></script> -->            </div>
+    </div>
+</div>
+
+<div class="app-drawer-overlay d-none animated fadeIn"></div>
+
+<script>
+function swapcontent(cv,v,a,b,c,d,e,f,g,h,i,j,k,l)
+{   
+	var divid="#"+cv;
+	$(divid).html('<img src="images/loader.gif" width="100" height="100" alt="loading">').show();
+	$("#roll").html('<img src="images/loader.gif" width="100" height="100" alt="loading">').show();
+	var url="scriptfile_a.php";
+	var str;
+  
+ 
+  if(cv=='password_management') 
+  {
+      if($("#oldpwd").val()=='' || $("#newpwd").val()=='' || $("#confpwd").val()=='')
+      {
+          alert('Important field is missing.');
+          $(divid).html('').show();
+          $("#roll").html('').show();
+          return false;
+      }
+	  	$.post(url,$("#frmpassword").serialize()+"&contentvar="+cv,function(data){  
+        $(divid).html(data).show(); 
+        $("#roll").html('').show(); 
+		
+		});
+  }
+ if(cv=='password_management2') 
+  {
+	  
+      if(v=='' || a=='' || b=='')
+      {
+          alert('Important field is missing.');
+          $(divid).html('').show();
+          $("#roll").html('').show();
+          return false;
+      }
+	  	  
+		$.post(url,{contentvar:cv,oldpwd:v,newpwd:a,confpwd:b},function(data){
+        $(divid).html(data).show(); 
+        $("#roll").html('').show(); 
+		
+		});
+  }
+
+  if(cv=='display_general_payment') 
+ {
+     var val=$("#pay_type").val();
+     var pay_type_array = val.split('***');
+     if(pay_type_array[1]=='General Payment')
+        {
+            $.post(url,{contentvar:cv,val:val},function(data){
+            $(divid).html(data).show(); 
+            $("#roll").html('').show();
+            });
+        }
+    else
+        {
+            $(divid).html('').show(); 
+            $("#roll").html('').show();
+            return false;
+        }
+     
+  }
+  if(cv==='generate_matricno')
+  {
+    $('#btngenmat').attr('disabled', true);
+    $('#btngenmat').attr('style','cursor: no-drop;');
+    $('#btngenmat').html('<i class="fa fa-spinner fa-spin"> </i> Generating ...').show();
+    $(divid).html('').show();
+    $.post(url,{contentvar:cv,regno:v,session:a},function(data){
+            //var resp = JSON.parse(data);
+            //var resp = JSON.stringify(data)
+            //var resp = jQuery.parseJSON(data);
+           // var resp = data.json()
+          //  var dt = data.split('***')
+           // console.log(data+ '/n'+dt)
+           $(divid).html(data).show();
+           $('#btngenmat').html('<i class="fa fa-cog"> </i> Generate Matric Number').show();
+           //if(dt[0]==="success")
+           //{
+            //$('#btngenmat').html('<i class="fa fa-cog"> </i> Generate Matric Number').show();
+            //var text="<div class='alert alert-success'>Matric Number generated successfully. <br> Matric Number : "+ dt[1] + " </div>";
+            ///$(divid).html(text).show();
+          // }
+                
+                
+               // console.log(resp.status) 
+           // $("#roll").html('').show();
+
+            });
+     // alert('yes ooo');
+  }
+
+  if(cv=='remita_payment_revalidation') //start payment_revalidation
+	  {
+		  var regno=document.getElementById('regno').value;
+		  var pay_type=document.getElementById('pay_type').value;
+		  if(regno=='' || pay_type=='')
+		   {
+               
+			   alert("Select necessary parameters from the list");
+			   $(divid).html('').show();
+			   exit;
+		   }
+			$.post(url,$("#revalidateform").serialize()+"&contentvar="+cv,function(data){
+			$(divid).html(data).show(); //report result from the ajaxfile, the data stores the information to be displayed from ajaxfile
+			
+			});
+	  }//end of payment_revalidation
+  if(cv=='remita_final_payment_revalidation') //start final_payment_revalidation
+	  {
+			$.post(url,$("#final_revalidationform").serialize()+"&contentvar="+cv+"&id="+v+"&regno="+a+"&json_id="+b,function(data){
+			$(divid).html(data).show();
+            $("#roll").html('').show(); 
+
+			});
+	  }//end of final_payment_revalidation
+	
+	if(cv=='result_option')
+   {
+	   //alert('Yes');
+	   //exit;
+	   $.post(url,{contentvar:cv,opt:v,regno:a},function(data){
+		$(divid).html(data).show(); 
+		});
+   }//end of result_option
+	
+	if(cv=='display_results') //display result
+	  {
+		$.post(url,$("#resultform").serialize()+"&contentvar="+cv,function(data){	
+		$(divid).html(data).show();
+
+		});
+	  }//end of display_results
+	
+	if(cv=='email_update') //email update
+	  {
+		$.post(url,$("#emailform").serialize()+"&contentvar="+cv,function(data){	
+		$(divid).html(data).show();
+
+		});
+	  }//end of email update
+    if(cv=='glo_phoneno_update') //Glo MSISDN phone number update
+	  {
+		$.post(url,$("#glo_phonenoform").serialize()+"&contentvar="+cv,function(data){	
+		$(divid).html(data).show();
+
+		});
+	  }//end of email update
+
+  
+} 
+ </script>
+</body>
+</html>

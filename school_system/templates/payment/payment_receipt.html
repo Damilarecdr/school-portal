@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Receipt</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="all" />
+</head>
+
+<body>
+  <div>
+    <div class="py-4">
+      <div class="px-14 py-6">
+        <table class="w-full border-collapse border-spacing-0">
+          <tbody>
+            <tr>
+              <td class="w-full align-top">
+                <div>
+                  <img src="{% static 'assets/images/logo1.jpg' %}" class="h-12" />
+                </div>
+              </td>
+              <td class="align-top">
+                <div class="text-sm">
+                  <table class="border-collapse border-spacing-0">
+                    <tbody>
+                      <tr>
+                        <td class="border-r pr-4">
+                          <div>
+                            <p class="whitespace-nowrap text-slate-400 text-right">Date</p>
+                            <p class="whitespace-nowrap font-bold text-main text-right" style="color:#2801a7">{{ school_fee_payment.date_paid|default:"Not Available" }}</p>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-slate-100 px-14 py-6 text-sm">
+        <table class="w-full border-collapse border-spacing-0">
+          <tbody>
+            <tr>
+              <td class="w-1/2 align-top">
+                <div class="text-sm text-neutral-600">
+                  <p class="font-bold" style="color: #2801a7;">God's Heritage Group of School, Ekosin                </p>
+                  <p>No. 1 Isale Ogun Street, along Okua road,</p>
+                  <p> Ekosin, Osun state.</p>
+                  <p>Nigeria.</p>
+                
+                </div>
+              </td>
+              
+              <td class="w-1/2 align-top text-right">
+                <div class="text-sm text-neutral-600">
+                    <p>{{ school_fee_payment.date_paid|default:"Not Available" }}</p>
+                  <p class="font-bold">{{ application.surname }} {{ application.other_names }}</p>
+                  <p>Admission Number: {{ application.admission_number }}</p>
+                  <p>Class: {{ application.class_applying }}</p>
+                  <p>Payment status: {{ school_fee_payment.is_paid|yesno:"Paid,Not Paid" }}</p>
+                  <p>Payment status: {{ school_fee_payment.is_paid|yesno:"Paid,Not Paid" }}</p>
+                 
+                  <p>Transaction_reference: {{ school_fee_payment.transaction_reference}}</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><br><br>
+      <P style="text-align: center;">School Fee Payment Receipt</P>
+      <div class="px-14 py-10 text-sm text-neutral-700">
+        <table class="w-full border-collapse border-spacing-0">
+          <thead>
+            <tr>
+              <td class="border-b-2 border-main pb-3 pl-3 font-bold text-main"></td>
+              <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main" style="color: #2801a7;">Description</td>
+              <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main" style="color: #2801a7;">Amount</td>
+             
+             
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in breakdown.items %}
+            <tr>
+              <td class="border-b py-3 pl-3">{{ forloop.counter }}.</td>
+              <td class="border-b py-3 pl-2">{{ item.0 }}</td>
+              <td class="border-b py-3 pl-2 text-right">₦{{ item.1 }}</td>
+            
+             
+            <!-- Adjust based on your logic -->
+            </tr>
+            {% endfor %}
+            <tr>
+              <td colspan="7">
+                <table class="w-full border-collapse border-spacing-0">
+                  <tbody>
+                    <tr>
+                      <td class="w-full"></td>
+                      <td>
+                        <table class="w-full border-collapse border-spacing-0">
+                          <tbody>
+                          
+                        
+                            <tr  style="background-color: #2801a7;">
+                              <td class="bg-main p-3"  style="background-color: #2801a7;">
+                                <div class="whitespace-nowrap font-bold text-white">Total:</div>
+                              </td>
+                              <td class="bg-main p-3 text-right"  style="background-color: #2801a7;">
+                                <div class="whitespace-nowrap font-bold text-white">₦{{ net_total }}</div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <div class="px-14 py-10 text-sm text-neutral-700">
+        <p class="text-main font-bold" style="color: #2801a7;">Notes</p>
+        <p class="italic">Please submit a copy of this receipt to your class teacher.</p><br>
+        <p style="text-align: center;">God's Heritage School, Ekosin | Bursary@ghse.com.ng </p>
+      </div>
+
+ 

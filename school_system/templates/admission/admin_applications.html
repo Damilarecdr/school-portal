@@ -1,0 +1,160 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Applications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            margin: 10px 5px;
+            border-radius: 5px;
+        }
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        .btn:hover {
+            opacity: 0.9;
+            cursor: pointer;
+        }
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        table a {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        table a:hover {
+            text-decoration: underline;
+        }
+        input[type="file"] {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+            cursor: pointer;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 10px; /* This centers the image */
+            max-width: 150px;
+        }
+        .school-name {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <img src="{% static 'assets/images/logo1.jpg' %}" alt="School Logo" class="logo">
+        <p class="school-name" style="color:  #007bff;">God's Heritage School, Ekosin</p>
+
+        <h1>Admission Applications</h1>
+
+        <!-- Button to download approved admissions -->
+        <a href="{% url 'download_approved_admissions' %}" class="btn btn-success">Download Approved Admissions</a>
+
+        <!-- Button to download applications as CSV -->
+        <a href="?download_csv=true" class="btn btn-primary">Download as CSV</a>
+
+        <!-- Form to upload CSV file for approving applications -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="csv_upload" accept=".csv" required>
+            <button type="submit" class="btn btn-success">Upload CSV for Approval</button>
+        </form>
+
+        <!-- Table displaying unapproved applications -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Surname</th>
+                    <th>Other Names</th>
+                    <th>Email</th>
+                    <th>Class Applying To</th>
+                    <th>Last Class</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                <tr>
+                    <td>{{ application.surname }}</td>
+                    <td>{{ application.other_names }}</td>
+                    <td>{{ application.email }}</td>
+                    <td>{{ application.last_class }}</td>
+                    <td>{{ application.class_applying }}</td>
+                    <td>
+                        <a href="{% url 'approve_application' application.id %}">Approve</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

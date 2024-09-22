@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Courses</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Optional: Add your CSS -->
+</head>
+<body>
+    <div class="container">
+        <h2>Select Courses to Register</h2>
+        <form method="post" action="{% url 'register_courses' %}">
+            {% csrf_token %}
+            <div class="course-list">
+                {% for course in courses %}
+                    <div class="course-item">
+                        <input type="checkbox" id="course_{{ course.id }}" name="courses" value="{{ course.id }}">
+                        <label for="course_{{ course.id }}">{{ course.name }}: {{ course.description }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+</body>
+</html>

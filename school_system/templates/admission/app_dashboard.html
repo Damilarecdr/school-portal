@@ -1,0 +1,889 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>GHSE Portal::</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
+    />
+    <meta name="description" content="portal management system.">
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <script>
+
+$(document).change(function(){
+//######### AutoSum	checkbox on chanege effect
+$("input[type=checkbox]").change(function(){
+  recalculate();
+});
+
+ 
+function recalculate(){
+    var sum = 0;
+	var v,msg;
+
+    $("input[type=checkbox]:checked").each(function(){
+		v=$(this).attr("rel");
+		//v=v.split('***');
+        if(v=='general_payment')
+            {
+                if($('#general_fee_amount').val()==='' || $('#general_fee_amount').val()===0)
+                    {
+                        alert('Enter Amount in the General Payment field before selecting the checkbox');
+                        $(this).prop("checked",false);
+                        return;
+                    }
+                
+                sum += parseInt($('#general_fee_amount').val());
+            }
+        else
+		sum += parseInt($(this).attr("rel"));//v[0]
+    });
+	// alert('First = '+sum1+' Second = '+sum2);
+	//msg="Total Unit for "++" semester = "+sum1+"<br>"+"Total Unit for "++" semester = "+sum2;
+	
+	msg="<font color='red'><b>"+sum+"<input type='hidden' name='selected_total_amount' id='selected_total_amount' value='"+sum+"'></b></font>";
+	$('#autosum').html(msg).show();
+   
+}
+// end of Autosum
+	
+	
+
+$("div#print_button").click(function(){
+   $("div.PrintArea").printArea({mode: "popup", popClose: false});
+  });
+
+})
+</script>
+</head>
+<body>
+<div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
+    <link rel="stylesheet" type="text/css" href="include/easyui.css">
+<!--<link rel="stylesheet" type="text/css" href="include/icon.css">
+<link rel="stylesheet" type="text/css" href="include/demo.css"> -->
+<link rel="stylesheet" href="./assets/css/tinybox.css" />
+
+
+<script type="text/javascript" src="include/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="include/tinybox.js"></script> 
+<script type="text/javascript" src="include/jquery.easyui.min.js"></script>
+
+<!--<script type="text/javascript" src="include/jquery.edatagrid.js"></script> -->
+<script type="text/javascript" src="include/jquery.serializeobject.js"></script>
+<!-- <script type="text/javascript" src="include/gridster.js"></script> 
+
+<link href="css/default.css" rel="stylesheet" type="text/css" /> -->
+<!--<link href="css/menu.css" rel="stylesheet" type="text/css" />-->
+<link rel="shortcut icon" href="./assets/images/logo.jpg"> <!-- put the image/logo on the browser tab -->
+<!-- <link href="css/fonts.css" rel="stylesheet" type="text/css" /> -->
+
+
+<link rel="stylesheet" href="./assets/countdown/jquery.countdown.css" />
+<script src="./assets/countdown/jquery.countdown.js"></script>
+		<script src="{% static 'assets/js/script.js'%}"></script>  
+		<link href="{% static 'main.css'' %}" rel="stylesheet">
+		<script type="text/javascript" src="{% static 'assets/scripts/main.js'%}"></script>
+		<script src="./assets/js/interswitch_checkout.js"></script> 
+		<script src="https://qa.interswitchng.com/collections/public/javascripts/inline-checkout.js"></script>
+<!-- <link href="./main.css"  rel="stylesheet"> -->
+<div class="app-header header-shadow">
+    
+   
+     
+        <div class="app-header__content">
+            <div class="app-header-left">
+                <div class="dropdown show">
+                    <a href="{% url 'dashboard' %}" class="nav-link" role="button" id="dropdownMenuLink" aria-expanded="false">
+                    <i class="nav-link-icon pe-7s-culture"> </i>
+                            Dashboard
+                            <i class="ml-2 opacity-5"></i>
+                    </a>
+                    
+                </div>
+                
+                <div class="dropdown show">
+                    <a href="{% url 'account_logout' %}"   class="nav-link" aria-expanded="false">
+                            <i class="nav-link-icon fa fa-power-off"></i>
+                            Logout
+                    </a>
+                    
+                </div>
+            </div>
+
+            <div class="app-header-right">
+                <!-- Email-Notification
+                <div class="header-dots">
+                    <div class="dropdown">
+                        <a href="main.php" aria-haspopup="true" aria-expanded="false"  class="p-0 mr-2 btn btn-link">
+                            <span class="icon-wrapper icon-wrapper-alt rounded-circle">
+                                <span class="icon-wrapper-bg bg-primary"></span>
+                                <i class="icon text-primary ion-android-apps"></i>
+                            </span>
+                        </a>
+                                           </div>
+                    <div class="dropdown">
+                        <button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="p-0 mr-2 btn btn-link">
+                            <span class="icon-wrapper icon-wrapper-alt rounded-circle">
+                                <span class="icon-wrapper-bg bg-danger"></span>
+                                <i class="icon text-danger icon-anim-pulse ion-android-notifications"></i>
+                                <span class="badge badge-dot badge-dot-sm badge-danger">Notifications</span>
+                            </span>
+                        </button>
+                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl rm-pointers dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu-header mb-0">
+                                <div class="dropdown-menu-header-inner bg-deep-blue">
+                                    <div class="menu-header-image opacity-1" style="background-image: url('assets/images/dropdown-header/city3.jpg');"></div>
+                                    <div class="menu-header-content text-dark">
+                                        <h5 class="menu-header-title">Notifications</h5>
+                                        <h6 class="menu-header-subtitle">You have <b>21</b> unread messages</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="tabs-animated-shadow tabs-animated nav nav-justified tabs-shadow-bordered p-3">
+    <li class="nav-item">
+        <a role="tab" class="nav-link active" data-toggle="tab" href="#inbox">
+            <span>Inbox Msgs.</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a role="tab" class="nav-link" data-toggle="tab" href="#compose">
+            <span>Compose</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a role="tab" class="nav-link" data-toggle="tab" href="#sent">
+            <span>Sent Msgs.</span>
+        </a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="inbox" role="tabpanel">
+            <div class="scroll-area-sm">
+                <div class="scrollbar-container">
+                    <div class="p-3">
+                        <div class="vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-success"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">All Hands Meeting</h4>
+                                        <p>Lorem ipsum dolor sic amet, today at <a href="javascript:void(0);">12:00 PM</a></p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-warning"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><p>Another meeting today, at <b class="text-danger">12:00 PM</b></p>
+                                        <p>Yet another one, at <span class="text-success">15:00 PM</span></p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-danger"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">Build the production release</h4>
+                                        <p>Lorem ipsum dolor sit amit,consectetur eiusmdd tempor incididunt ut labore et dolore magna elit enim at minim veniam quis nostrud</p><span
+                                                class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-primary"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title text-success">Something not important</h4>
+                                        <p>Lorem ipsum dolor sit amit,consectetur elit enim at minim veniam quis nostrud</p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-success"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">All Hands Meeting</h4>
+                                        <p>Lorem ipsum dolor sic amet, today at <a href="javascript:void(0);">12:00 PM</a></p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-warning"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><p>Another meeting today, at <b class="text-danger">12:00 PM</b></p>
+                                        <p>Yet another one, at <span class="text-success">15:00 PM</span></p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-danger"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title">Build the production release</h4>
+                                        <p>Lorem ipsum dolor sit amit,consectetur eiusmdd tempor incididunt ut labore et dolore magna elit enim at minim veniam quis nostrud</p><span
+                                                class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-item vertical-timeline-element">
+                                <div><span class="vertical-timeline-element-icon bounce-in"><i class="badge badge-dot badge-dot-xl badge-primary"> </i></span>
+                                    <div class="vertical-timeline-element-content bounce-in"><h4 class="timeline-title text-success">Something not important</h4>
+                                        <p>Lorem ipsum dolor sit amit,consectetur elit enim at minim veniam quis nostrud</p><span class="vertical-timeline-element-date"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="tab-pane " id="compose" role="tabpanel">
+        <div class="scroll-area-sm">
+            <div class="scrollbar-container">
+                <div class="p-3">
+                    <div class="notifications-box">
+                        Write your message here..........
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tab-pane" id="sent" role="tabpanel">
+        <div class="scroll-area-sm">
+            <div class="scrollbar-container">
+                <div class="p-3">
+                    Sent messages.....
+                </div>
+            </div>
+        </div>
+    </div>
+</div>                            <ul class="nav flex-column">
+                                <li class="nav-item-divider nav-item"></li>
+                                <li class="nav-item-btn text-center nav-item">
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+                -->
+                <div class="header-btn-lg pr-0">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-wrapper">
+                            <div class="widget-content-left">
+                                <div class="btn-group">
+                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                                                                <img width="42" class="rounded-circle" src="putme_pictures/202210851123cf.jpg" alt="">
+                                        <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                    </a>
+                                    <div tabindex="-1" role="menu" aria-hidden="true" class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
+                                        <div class="dropdown-menu-header">
+                                            <div class="dropdown-menu-header-inner bg-success">
+                                                <div class="menu-header-image opacity-2" style="background-image: url('assets/images/dropdown-header/city3.jpg');"></div>
+                                                <div class="menu-header-content text-left">
+                                                    <div class="widget-content p-0">
+                                                        <div class="widget-content-wrapper">
+                                                            <div class="widget-content-left mr-3">
+                                                                <img width="42" class="rounded-circle"
+                                                                     src="putme_pictures/202210851123cf.jpg"
+                                                                     alt="">
+                                                            </div>
+                                                            <div class="widget-content-left">
+                                                                <div class="widget-heading">
+                                                                    {{ application.surname }}  {{ application.other_names }}                                                           </div>
+                                                                <div class="widget-subheading opacity-8">
+                                                                    Email: {{ application.email }}<br>Disability:{{ application.disability}}                                                                </div>
+                                                            </div>
+                                                            <div class="widget-content-right mr-2">
+                                                                <a href="javascript:if(confirm('You about to Logout?')===true) location='logout.php'" class="btn-pill btn-shadow btn-shine btn btn-focus">Logout
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="scroll-area-xs" style="height: 260px;">
+                                            <div class="scrollbar-container ps">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item-header nav-item">Password Management
+                                                    </li>
+													<li class="nav-item">
+														<div class="alert alert-infxo">
+														  <form name="frmpassword" id="frmpassword">
+															  <span id='password_management'></span>
+															<table class="mb-0 table table-sm">
+															   <tr><td>Old Password</td><td><input type='password' name='oldpwd' id='oldpwd' class='form-control'></td></tr>
+															   <tr><td>New Password</td><td><input type='password' name='newpwd' id='newpwd' class='form-control'></td></tr>
+															   <tr><td>Confirm Password</td><td><input type='password' name='confpwd' id='confpwd' class='form-control'></td></tr>
+															   
+															</table>
+															<ul class="nav flex-column">
+																<li class="nav-item-divider nav-item">
+																</li>
+																<li class="nav-item-btn text-center nav-item">
+																	<input type='button' name='cmd' id='cmd' value='Change Password' class='btn btn-success' >
+																	
+																</li>
+															</ul>
+															
+															
+														  </form>
+														</div>
+													   </li>
+													
+													
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!--<ul class="nav flex-column">
+                                            <li class="nav-item-divider mb-0 nav-item"></li>
+                                        </ul>
+                                        <div class="grid-menu grid-menu-2col">
+                                            <div class="no-gutters row">
+                                                <div class="col-sm-6">
+                                                    <button class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-warning">
+                                                        <i class="pe-7s-chat icon-gradient bg-amy-crisp btn-icon-wrapper mb-2"></i>
+                                                        Message Inboxx
+                                                    </button>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <button class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-danger">
+                                                        <i class="pe-7s-ticket icon-gradient bg-love-kiss btn-icon-wrapper mb-2"></i>
+                                                        <b>Support Tickets</b>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-content-left  ml-3 header-user-info">
+                                <div class="widget-heading">
+                                    Jimoh Abdulwahab Adinoyi                                   
+                                </div>
+                                <div class="widget-subheading">
+                                   jimohabdulwahab902@gmail.com                                </div>
+                            </div>
+                            <!-- <div class="widget-content-right header-user-info ml-3">
+                                <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
+                                    <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                                </button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div> 
+        <div class="app-main">
+            <div class="app-sidebar sidebar-shadow">
+                <div class="app-header__logo">
+                    <div class="logo-src"></div>
+                    <div class="header__pane ml-auto">
+                        <div>
+                            <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-header__mobile-menu">
+                    <div>
+                        <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="app-header__menu">
+                    <span>
+                        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                            <span class="btn-icon-wrapper">
+                                <i class="fa fa-ellipsis-v fa-w-6"></i>
+                            </span>
+                        </button>
+                    </span>
+                </div>    <div class="scrollbar-sidebar">
+                    <div class="app-sidebar__inner">
+                        <ul class="vertical-nav-menu">
+                                                                        <!-- ##### Student Menu ######### -->
+                                            <li class="app-sidebar__heading">Student Menu</li>
+                                           <!-- <li>
+                                                <a href="main.php">
+                                                    <i class="metismenu-icon pe-7s-light"></i>
+                                                    Dashboard
+                                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                                </a>-->
+                                                 <ul>
+                                                    <li>
+                                                        <a href="{% url 'dashboard' %}">
+                                                            <i class="metismenu-icon">
+                                                            </i>Dashboard
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="metismenu-icon">
+                                                            </i>Application Fee
+                                                        </a>
+                                                    </li>
+													<li>
+                                                        <a href="#">
+                                                            <i class="metismenu-icon">
+                                                            </i>ReQuery Payment
+                                                        </a>
+                                                    </li>
+                                                    <li>
+
+                                                    
+                                                        <a href="#">
+                                                            <i class="metismenu-icon">
+                                                            </i>Edit Application
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                    <a href="{% url 'print_application' %}">
+                                                        <i class="metismenu-icon">
+                                                        </i>Print application form
+                                                    </a>
+                                                </li>
+                                                 
+                                                    <!--<li>
+                                                        <a href="forms-validation.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Validation
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-wizard.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Wizard
+                                                        </a>
+                                                    </li>-->
+                                                </ul> 
+                                            <!--</li>-->
+                                            <!-- <li>
+                                                <a href="#">
+                                                    <i class="metismenu-icon pe-7s-joy"></i>
+                                                    Widgets
+                                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                                </a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="forms-datepicker.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Datepicker
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-range-slider.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Range Slider
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-input-selects.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Input Selects
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-toggle-switch.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Toggle Switch
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-wysiwyg-editor.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>WYSIWYG Editor
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-input-mask.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Input Mask
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-clipboard.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Clipboard
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="forms-textarea-autosize.html">
+                                                            <i class="metismenu-icon">
+                                                            </i>Textarea Autosize
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li> -->
+                                            <!-- ##### End of Students Menu ####### -->
+                                                                
+
+
+                            
+
+                            
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="app-main__outer">
+                <div class="app-main__inner">
+                 <div class="app-page-title">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div class="page-title-icon1">
+                                    <i>
+										<img src="{% static 'assets/images/ghs.png' %}" alt=''>                                        <!--<img src="assets/images/banner.png" alt="">-->
+                                    </i>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+</div>                                  
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="main-card mb-3 card">
+                                        <div class="card-body">
+                                            
+                                            {% if application %}
+                                            <h3 style="color: rgb(47, 47, 211);"><b>Your Application</b></h3>
+                                            
+                                            <ul style="list-style-type: none; padding: 0; margin: 0;">
+                                                <li>Full Name: {{application.surname}} {{application.other_names}}</li>
+                                                <li>Username: {{user.username}}</li>
+                                                <li>Class Applying To: {{ application.class_applying }}</li>
+                                                <li>Status: 
+                                                    {% if application.is_approved %}
+                                                      Approved
+                                                    {% else %}
+                                                     Dear {{application.surname}} {{application.other_names}}, your application is under review and you will be notify if approved,Please proceed to make the payment for your application.
+                                                    {% endif %}</li>
+                                              </ul>
+                                              
+                                              
+                                           
+                                           
+                                           
+                                          {% else %}
+                                          <h5 class="card-title">Welcome, <a href="{% url 'apply' %}">click here to apply</a></h5>
+                                          {% endif %}
+                                          
+                                           
+                                            
+</div></div>
+                                            <!--div class="divider row"></div>
+                                            <div class="alert alert-info text-center">
+                                                    Select the payment type from the list and click "<strong>Continue</strong>" button. If you have already attempted to make this payment, but was not successful, use the ReQuery section below this page to revalidate your transaction(s).
+                                                    <div class="alert alert-danger"><b>NOTE: It is important that you carefully check the type of payment you are attempting to initiate to avoid payment error.</b>
+                                                    </div>
+                                            </div>
+                                            <div class="divider row"></div>
+
+                                                    
+                                            <div id="smartwizard">
+                                                <ul class="forms-wizard">
+                                                    <li>
+                                                        <a href="#step-1">
+                                                            <em>1</em><span>Payment Type Selection</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#step-2">
+                                                            <em>2</em><span>Payment Preview</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#step-3">
+                                                            <em>3</em><span>Make Payment</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+        										
+                                                <div class="form-wizard-content">
+                                                    <form id="app_form" name="app_form">
+                                                        <input type="hidden" name="payment_mode" id="payment_mode" value='general_payment'>
+                                                        <input type="hidden" name="payment_count" id="payment_count" value='multiple'>
+                                                        <input type="hidden" name="category" id="category" value='ug'>
+                                                        <input type="hidden" name="session" id="session" value='2024/2025'>
+                                                        <input type="hidden" name="semester" id="semester" value='1st'>
+                                                        <input type="hidden" name="regno" id="regno" value='22/67EC/1449'>
+
+                                                        <input type="hidden" name="surname" id="surname" value='Jimoh'>
+                                                        <input type="hidden" name="first_name" id="first_name" value='Abdulwahab'>
+                                                        <input type="hidden" name="other_name" id="other_name" value='Adinoyi'>
+                                                        <input type="hidden" name="email" id="email" value='jimohabdulwahab902@gmail.com'>
+                                                        <input type="hidden" name="phone_no" id="phone_no" value='08106044973'>
+                                                        <input type="hidden" name="level" id="level" value=''>
+														<input type="hidden" name="studstatus" id="studstatus" value='Returning'>
+														<input type="hidden" name="nationality" id="nationality" value='Nigerian'>
+														<input type="hidden" name="prog_id" id="prog_id" value='ECE'>
+														<input type="hidden" name="mode_of_entry" id="mode_of_entry" value='UTME'>
+														<input type="hidden" name="mode_of_study" id="mode_of_study" value='Full-Time'>
+														<input type="hidden" name="stream" id="stream" value=''>
+
+
+                                                        <div id="step-1">
+                                                                    
+                                                                        
+                                                            <div class="form-row">
+                                                                <div class="col-md-6">
+                                                                    <div class="position-relative form-group"><label for="email" class="">Preferred Payment Gateway</label>
+                                                                        <select name="payment_gateway" id="payment_gateway" class="form-control" onchange="swapcontent('list_payment',this.value)">
+                                                                            <option selected value='Interswitch'>Interswitch Gateway</option>                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                                                                               
+                                                                <div id="display_general_payment"></div>
+																
+                                                                
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="col-md-12" id="list_payment">
+
+
+
+                                                                </div>
+                                                            </div>
+															<div id="display_payment_breakdown"></div>
+                                                            <div class="divider row"></div>                                                   
+                                                        
+                                                        </div> <!-- end of step-1 ->
+                                                        <div id="step-2">
+                                                            <div id="payment_preview"></div>
+                                                        </div> <!-- end of step-2 ->
+                                                    
+                                                        <div id="step-3">
+                                                        <div id="generate_rrr"></div>
+                                                        </div> <!-- end of step-3 ->
+                                                        <span id="make_payment"></span><span id="roll"></span>
+                                                        <span id="remita_form_submit"></span> 
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <br><br><div class='alert alert-danger alert-dismissible fade in' role='alert'><b>No payment to ReQuery</b></div><div id="remita_payment_revalidation"></div>
+<div id="remita_final_payment_revalidation"></div>                                </div-->
+                    <!-- ###### Content End ##########-->
+
+
+                
+                
+            
+            <div class="app-wrapper-footer">
+                    <div class="app-footer">
+                        <div class="app-footer__inner">
+                            
+                            <div class="app-footer-right">
+                                    &copy; 2024.  God's Heritage Group of School. All right reserved. All right reserved. 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <script type="text/javascript" src="./assets/scripts/main.js"></script> -->            </div>
+    </div>
+</div>
+
+<div class="app-drawer-overlay d-none animated fadeIn"></div>
+
+<script>
+$(document).ready(function(){
+	swapcontent('list_payment');			  
+	});
+function swapcontent(cv,v,a,b,c,d,e,f,g,h,i,j,k,l)
+{   
+	var divid="#"+cv;
+	$(divid).html('<img src="images/loader.gif" width="100" height="100" alt="loading">').show();
+	$("#roll").html('<img src="images/loader.gif" width="100" height="100" alt="loading">').show();
+	var url="scriptfile_a.php";
+	var str;
+  
+    if(cv=='get_details') 
+        {
+            $.post(url,{contentvar:cv,regno:v},function(data){
+                $(divid).html(data).show(); 
+                $("#roll").html('').show();
+                });
+        }
+    if(cv=='list_payment') 
+        {
+            var form_data=$('#app_form').serializeArray();
+            var dataObj = {};
+            $(form_data).each(function(i, field){
+                    dataObj[field.name] = field.value;
+                    });
+                form_data=JSON.stringify(dataObj);
+                $.post(url,{contentvar:cv,json_data:form_data},function(data){
+                $(divid).html(data).show(); 
+                $("#roll").html('').show(); 
+                
+                }); 
+        }
+  
+if(cv=='display_general_payment') 
+ {
+     var val=$("#pay_type").val();
+     var pay_type_array = val.split('***');
+     if(pay_type_array[1]=='General Payment')
+        {
+            $.post(url,{contentvar:cv,val:val},function(data){
+            $(divid).html(data).show(); 
+            $("#roll").html('').show();
+            });
+        }
+    else
+        {
+            $(divid).html('').show(); 
+            $("#roll").html('').show();
+            return false;
+        }
+     
+  }
+  
+if(cv=='display_payment_breakdown') 
+ {
+     var val=$("#pay_type").val();
+     var pay_type_array = val.split('***');
+     if(pay_type_array[1]=='School Charges' || pay_type_array[1]=='School Charges 1st Installment' || pay_type_array[1]=='School Charges 2nd Installment')
+        {
+            $.post(url,$("#app_form").serialize()+"&contentvar="+cv,function(data){ 
+            $(divid).html(data).show(); 
+            $("#roll").html('').show();
+            });
+        }
+    else
+        {
+            $(divid).html('').show(); 
+            $("#roll").html('').show();
+            return false;
+        }
+     
+  }
+if(cv=='payment_preview')
+{
+	//alert($("#app_form").serialize());
+    $.post(url,$("#app_form").serialize()+"&contentvar="+cv,function(data){
+		$(divid).html(data).show();
+		$("#roll").html('').show();
+		});
+}
+  if(cv=='payment_previewxx' || cv=='generate_rrrxx') 
+  {
+      var form_data=$('#app_form').serializeArray();
+      var dataObj = {};
+	  var payObj = {};
+      $(form_data).each(function(i, field){
+            /*if(dataObj[field.name]==='paycode')
+                {
+                    alert('yess');
+                    dataObj['paycode_r'] =  $( ".paycode_class:checked" ).map(function() {
+                    return $(this).val();
+                }).get();
+                }
+                
+                else   */             
+			        dataObj[field.name] = field.value;
+			});
+            
+		form_data=JSON.stringify(dataObj);
+       // alert(form_data);
+        $.post(url,{contentvar:cv,json_data:form_data},function(data){
+        $(divid).html(data).show(); 
+        $("#roll").html('').show(); 
+		
+		});
+  }
+  if(cv=='make_payment') 
+  {
+      if($("#surname").val()=='' || $("#first_name").val()=='' || $("#email").val()=='' || $("#phone_no").val()=='')
+      {
+          alert('Important parameter is missing.');
+          $("#roll").html('').show();
+          return false;
+      }
+	  	$.post(url,$("#app_form").serialize()+"&contentvar="+cv,function(data){  
+        $(divid).html(data).show(); 
+        $("#roll").html('').show(); 
+		
+		});
+  }
+
+  if(cv=='remita_form_submit') 
+  {
+      if($("#rrr").val()=='' || $("#responseurl").val()=='')
+      {
+          alert('Important payment parameter is missing.');
+          $(divid).html('').show();
+          $("#roll").html('').show();
+          return false;
+      }
+	  	$.post(url,$("#app_form").serialize()+"&contentvar="+cv,function(data){  
+        $(divid).html(data).show(); 
+        $("#roll").html('').show(); 
+		
+		});
+  }
+
+  if(cv=='remita_payment_revalidation') //start payment_revalidation
+	  {
+		  var regno=document.getElementById('regno').value;
+		  var pay_type=document.getElementById('pay_type').value;
+		  if(regno=='' || pay_type=='')
+		   {
+               
+			   alert("Select necessary parameters from the list");
+			   $(divid).html('').show();
+			   exit;
+		   }
+			$.post(url,$("#revalidateform").serialize()+"&contentvar="+cv,function(data){
+			$(divid).html(data).show(); //report result from the ajaxfile, the data stores the information to be displayed from ajaxfile
+			
+			});
+	  }//end of payment_revalidation
+  if(cv=='remita_final_payment_revalidation') //start final_payment_revalidation
+	  {
+			$.post(url,$("#final_revalidationform").serialize()+"&contentvar="+cv+"&id="+v+"&regno="+a+"&json_id="+b,function(data){
+			$(divid).html(data).show();
+            $("#roll").html('').show(); 
+
+			});
+	  }//end of final_payment_revalidation
+  if(cv=='interswitch_request') 
+	 {
+		$.post(url,{contentvar:cv,trans_id:v},function(data){
+		$(divid).html(data).show(); 
+		$("#roll").html('').show();
+		});
+
+	  }
+  if(cv=='school_fee_breakdown') 
+  {
+	  //alert(cv+''+v); return;
+	  TINY.box.show(v,0,0,0,0);
+	  $("#roll").html('').show();
+	  /*
+	  	$.post(url,$("form").serialize()+"&contentvar="+cv,function(data){  
+		$(divid).html(data).show(); 
+		$("#roll").html('').show(); 
+
+		}); */
+  }
+	
+  if(cv=='another') 
+  {
+	  	$.post(url,$("form").serialize()+"&contentvar="+cv,function(data){  
+		$(divid).html(data).show(); 
+		$("#roll").html('').show(); 
+
+		});
+  }
+  
+} 
+ </script>
+</body>
+</html>
